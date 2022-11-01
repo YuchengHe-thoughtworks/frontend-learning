@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>sum.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #8c8c8c; font-style: italic;}
+.s1 { color: #080808;}
+.s2 { color: #0033b3;}
+.s3 { color: #1750eb;}
+.s4 { color: #067d17;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+sum.js</font>
+</center></td></tr></table>
+<pre><span class="s0">// this references the object that is executing the current function</span>
+<span class="s2">const </span><span class="s1">obj = {</span>
+  <span class="s1">foo() {</span>
+    <span class="s2">return this</span><span class="s1">;</span>
+  <span class="s1">},</span>
+  <span class="s1">bar: </span><span class="s3">1</span>
+<span class="s1">};</span>
+<span class="s1">console.log(obj); </span><span class="s0">// { foo: [Function: foo], bar: 1 }</span>
+
+<span class="s2">const </span><span class="s1">foo2 = obj.foo();</span>
+<span class="s0">// 根据定义，this会引用执行当前函数「obj.foo()」的对象「obj」</span>
+<span class="s1">console.log(foo2); </span><span class="s0">// { foo: [Function: foo], bar: 1 }</span>
+
+<span class="s0">// if the func is part of an object, we call the func as [method]</span>
+<span class="s0">// 函数在对象中定义的时候被称为[方法]</span>
+
+<span class="s0">// 1.if the func is a [method] in an object, &quot;this&quot; references the object itself</span>
+<span class="s0">// 2.if the func is a regular func, &quot;this&quot; references the global object, which is window object in browsers and gobal in node</span>
+<span class="s0">// 1.v</span>
+<span class="s2">const </span><span class="s1">video = {</span>
+  <span class="s1">title: </span><span class="s4">'a'</span><span class="s1">,</span>
+  <span class="s1">play() {</span>
+    <span class="s1">console.log(</span><span class="s2">this</span><span class="s1">);</span>
+  <span class="s1">}</span>
+<span class="s1">};</span>
+
+<span class="s1">video.play(); </span><span class="s0">// { title: 'a', play: [Function: play] }</span>
+
+<span class="s0">// 再向video中添加一个stop方法</span>
+<span class="s1">video.stop = </span><span class="s2">function </span><span class="s1">() {</span>
+  <span class="s1">console.log(</span><span class="s2">this</span><span class="s1">);</span>
+<span class="s1">}</span>
+
+<span class="s1">video.stop(); </span><span class="s0">// { title: 'a', play: [Function: play], stop: [Function (anonymous)] }</span>
+</pre>
+</body>
+</html>

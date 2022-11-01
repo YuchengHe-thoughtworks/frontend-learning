@@ -1,0 +1,18 @@
+// 调用new Date() (Date()构造函数)返回一个Date对象。
+const date = new Date();
+console.log(date); // 2022-10-26T08:55:43.824Z
+
+// 1.获取今年年份
+const year = new Date().getFullYear();
+console.log(year); // 2022
+
+console.log(new Date().getDate());
+console.log(new Date().getMonth());
+console.log('h',new Date().getHours());
+console.log('m',new Date().getMinutes());
+console.log('s',new Date().getSeconds());
+
+// 2.时间戳
+const timestamp = Date.now();
+console.log(timestamp); // 1667104635379
+
