@@ -12,5 +12,7 @@ console.log(Math.max(...array)); // 2
 
 // 1.reduce+Math.max获取数组的最大元素
 const arr = [1, 2, 3];
-const max = arr.reduce((x, y) => Math.max(x,y), -Infinity);
+const getMax = (x, y) => Math.max(x, y);
+
+const max = arr.reduce(getMax, -Infinity);
 console.log(max);
