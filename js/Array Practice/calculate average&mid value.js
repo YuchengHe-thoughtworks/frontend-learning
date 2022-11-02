@@ -3,10 +3,12 @@ const arr = [12, 46, 32, 64];
 // Task1. 计算sum + 拿到数字元素个数
 // Resolve: array.reduce
 const n = arr.length;
-// console.log(n);
-function getAverage() {
-  const sum = arr.reduce((x, y) => x + y);
 
+const averageValue = getAverage(arr);
+const midValue = getMid(arr);
+
+function getAverage(array) {
+  const sum = array.reduce((x, y) => x + y);
   return sum / n;
 }
 
@@ -14,15 +16,14 @@ function getAverage() {
 // sort直接修改原数组
 arr.sort((a, b) => a - b); // arr = [ 12, 32, 46, 64 ]
 
-function getMid() {
+function getMid(array) {
   if (n % 2 === 0) {
-    return (arr[n/2 - 1] + arr[n/2])/2;
+    return (array[n/2 - 1] + array[n/2])/2;
   }else {
     // Math.floor()向下取整
-    return arr[Math.floor(n/2)];
+    const midIndexWhenOdd = Math.floor(n/2);
+    return array[midIndexWhenOdd];
   }
 }
 
-let averageValue = getAverage();
-let midValue = getMid();
 console.log(` mean: ${averageValue}, median: ${midValue} `);
