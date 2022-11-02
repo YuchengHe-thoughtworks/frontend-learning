@@ -27,3 +27,18 @@ function getMid(array) {
 }
 
 console.log(` mean: ${averageValue}, median: ${midValue} `);
+/*******************************************************************/
+const input = [12, 46, 32, 64];
+input.sort((a, b) => a - b);
+// 第一次调用 callbackFn (reducer函数)时参数 previousValue (是我们这里的accumulator参数) 的值
+const result = input.reduce((accumulator, currentValue, index, array) => {
+  accumulator.mean += currentValue /  array.length;
+
+  if(Math.abs(index + 1  - array.length / 2) < 1) {
+    accumulator.median = currentValue;
+  }
+
+  return accumulator;
+},{ mean: 0, median: 0 });
+
+console.log(result);
