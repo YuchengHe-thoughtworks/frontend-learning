@@ -34,3 +34,7 @@ const max = ages[ages.length-1];
 const diff = max - min;
 const result = [min, max, diff];
 console.log(result); // [ 13, 67, 54 ]
+
+/************************************************/
+const ages1 = input.map(person => person.age)
+const result1 = [Math.min(...ages1), Math.max(...ages1), Math.max(...ages) - Math.min(...ages)];
